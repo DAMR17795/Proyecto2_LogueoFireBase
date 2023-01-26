@@ -4,7 +4,8 @@
     <string name="contraseña">Contraseña</string>
     <string name="iniciar">Iniciar Sesión</string>
     <string name="registrar">Registrarse</string>
-    <string name="email">email</string>
+    <string name="email">Email</string>
+    <string name="confirmarcontra">Confirmar Contraseña</string>
     <string name="cerrar">Cerrar Sesión</string>
     <string name="ajustes">Ajustes</string>
     <string name="saludo">Hola</string>
@@ -15,4 +16,12 @@
     <string name="actualizaredad">Actualizar Edad</string>
     <string name="borrarusu">Borrar Usuario</string>
     <string name="registro">Registro</string>
+    <string name="msg_restablecerclave">Se le ha enviado un correo para restablecer su clave</string>
+    <string name="msg_borrarusu">Se ha borrado el usuario con éxito</string>
+    <string name="msg_actualizarUser">Nombre actualizaddo con éxito</string>
+    <string name="actualizarNacio">Nacionalidad actualizada con éxito</string>
+    <string name="actualizarEdad">Edad actualizada con éxito</string>
+    <string name="restablecerContra">Pulse Ok para enviar un email y restablecer la contraseña</string>
+    <string name="borrarUsuarioTexto">Se va a borrar su usuario. ¿Desea continuar?</string>
+    <string name="noigualcontra">Las contraseñas no coinciden</string>
 </resources>

@@ -7,22 +7,22 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:673937004597:android:4e950eced91315d36bf97c",
+        "mobilesdk_app_id": "1:673937004597:android:b1d4f86b4f4b3e5a6bf97c",
         "android_client_info": {
           "package_name": "www.iesmurgi.proyecto2_logueofirebase"
         }
       },
       "oauth_client": [
         {
-          "client_id": "673937004597-sk51lhgb2d24eri52vda9ckke4o738n8.apps.googleusercontent.com",
+          "client_id": "673937004597-evvtinu58dte2revrlpu3uooanocggs3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "www.iesmurgi.proyecto2_logueofirebase",
-            "certificate_hash": "7ddf917610e90cfecda22c065dc085b5f0095f32"
+            "certificate_hash": "02fefdfcb3df5bfc01d6f62a8a86a19621dea2b1"
           }
         },
         {
-          "client_id": "673937004597-f2lhbvjjvvlab11jdlus2u7bsucrkpcb.apps.googleusercontent.com",
+          "client_id": "673937004597-cpu0gnjrvroiro3s5f11nc6cm9nc62nv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "673937004597-f2lhbvjjvvlab11jdlus2u7bsucrkpcb.apps.googleusercontent.com",
+              "client_id": "673937004597-cpu0gnjrvroiro3s5f11nc6cm9nc62nv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

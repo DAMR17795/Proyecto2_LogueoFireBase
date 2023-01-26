@@ -1,5 +1,6 @@
 package www.iesmurgi.proyecto2_logueofirebase
 
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import www.iesmurgi.proyecto2_logueofirebase.databinding.AjustesBinding
@@ -57,6 +59,18 @@ class AjustesActivity:AppCompatActivity() {
             actualizarEdad()
         }
 
+    }
+
+    fun deleteCloud() {
+        val db = FirebaseFirestore.getInstance()
+        val docRef = db.collection("user").document(user.email.toString())
+        docRef.delete()
+            .addOnSuccessListener {
+                // Documento eliminado con éxito
+            }
+            .addOnFailureListener { e ->
+                // Error al eliminar el documento
+            }
     }
 
     //Actualizar Edad
@@ -193,6 +207,8 @@ class AjustesActivity:AppCompatActivity() {
             user.delete().addOnCompleteListener {
                 val dialog = builder.create()
                 if (it.isSuccessful) {
+                    //Borramos de la nube
+                    deleteCloud()
                     startActivity(Intent(this, MainActivity::class.java))
                     Toast.makeText(this,
                         this.resources.getString(R.string.msg_borrarusu), Toast.LENGTH_SHORT

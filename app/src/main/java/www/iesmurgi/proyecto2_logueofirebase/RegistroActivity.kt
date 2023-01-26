@@ -70,6 +70,7 @@ class RegistroActivity: AppCompatActivity() {
             .addOnFailureListener{ e -> Log.w(ContentValues.TAG, "Error writing document", e)}
     }
 
+
     //Metodo para el boton de registrarse
     fun crearUsuario(email: String, clave: String) {
 
@@ -92,15 +93,10 @@ class RegistroActivity: AppCompatActivity() {
     }
 
     fun comprobarClavesIguales(): Boolean {
-
         if (contra.text.toString().equals(contraCon.text.toString())) {
-
-
             return true
         } else {
-
             contraCon.error = this.resources.getString(R.string.noigualcontra)
-
             return false
         }
 

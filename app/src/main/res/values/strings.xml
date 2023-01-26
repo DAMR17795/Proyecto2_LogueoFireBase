@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Proyecto2_LogueoFireBase</string>
+    <string name="usuario">Usuario</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="iniciar">Iniciar Sesión</string>
+    <string name="registrar">Registrarse</string>
+    <string name="email">email</string>
+    <string name="cerrar">Cerrar Sesión</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="saludo">Hola</string>
+    <string name="dias">Bienvenido</string>
+    <string name="restablecer">Restablecer Contraseña</string>
+    <string name="actualizarnom">Actualizar Nombre Usuario</string>
+    <string name="actualizarnac">Actualizar Nacionalidad</string>
+    <string name="actualizaredad">Actualizar Edad</string>
+    <string name="borrarusu">Borrar Usuario</string>
+    <string name="registro">Registro</string>
+</resources>

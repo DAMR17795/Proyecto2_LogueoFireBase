@@ -36,7 +36,7 @@ class PerfilActivity : AppCompatActivity () {
     //Función para cargar los datos de la base de datos
     fun setup() {
 
-
+        var bienvenida = binding.tvBienvenida
         var correo = binding.tvCorreo
         var nombre = binding.tvNombre
         var nacionalidad = binding.tvNacionalidad
@@ -50,7 +50,7 @@ class PerfilActivity : AppCompatActivity () {
             val nacionality: String? = documento.getString("nacionalidad")
             val age: String? = documento.getString("edad")
 
-            //titutlo.text = titutlo.text.toString()+" "+user
+            bienvenida.text = user
             correo.text = email
             nombre.text = user
             nacionalidad.text = nacionality

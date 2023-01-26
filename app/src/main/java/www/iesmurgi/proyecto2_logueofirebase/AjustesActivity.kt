@@ -172,10 +172,7 @@ class AjustesActivity:AppCompatActivity() {
 
         }
         builder.setNegativeButton("Cancel") { dialog, which ->
-
         }
-
-
         val dialog = builder.create()
         dialog.setOnShowListener {
             val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
@@ -193,7 +190,6 @@ class AjustesActivity:AppCompatActivity() {
         builder.setTitle(this.resources.getString(R.string.borrarusu))
         builder.setMessage(this.resources.getString(R.string.borrarUsuarioTexto))
         builder.setPositiveButton("Ok") { dialog, which ->
-
             user.delete().addOnCompleteListener {
                 val dialog = builder.create()
                 if (it.isSuccessful) {

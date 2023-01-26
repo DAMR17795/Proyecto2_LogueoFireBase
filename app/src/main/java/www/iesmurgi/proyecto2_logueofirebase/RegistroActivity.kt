@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import www.iesmurgi.proyecto2_logueofirebase.databinding.RegistroBinding
+import java.util.regex.Pattern
 
 
 class RegistroActivity: AppCompatActivity() {
@@ -19,6 +21,19 @@ class RegistroActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var contra: EditText
     private lateinit var contraCon:EditText
+    private lateinit var usu:EditText
+    private val PATRON: Pattern = Pattern.compile(
+        "^" +
+                "(?=.*[0-9])" +
+                "(?=.*[a-z])" +
+                "(?=.*[A-Z])" +
+                "(?=.*[a-zA-Z])" +
+                "(?=\\S+$)" +
+                ".{4,}" +
+                "$"
+    )
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = RegistroBinding.inflate(layoutInflater)
@@ -28,9 +43,10 @@ class RegistroActivity: AppCompatActivity() {
 
         contra = binding.tvContra
         contraCon = binding.tvConfirmContra
+        usu = binding.tvEmail
 
         binding.btRegistrar.setOnClickListener {
-            if (comprobarClavesIguales()) {
+            if (comprobarClavesIguales() && comprobarContrasenia() && comprobarContraseniaConfirm() && comprobarEmail()) {
                 crearUsuario(binding.tvEmail.getText().toString(), binding.tvConfirmContra.getText().toString())
             }
 
@@ -106,6 +122,61 @@ class RegistroActivity: AppCompatActivity() {
         val dialog: AlertDialog = builder.create()
         dialog.show()
 
+    }
+
+    fun comprobarEmail(): Boolean {
+        if (usu.text.toString().length == 0) {
+            usu.error = this.resources.getString(R.string.emailvacio)
+            return false
+        } else {
+            if (!Patterns.EMAIL_ADDRESS.matcher(usu.text.toString()).matches()) {
+                usu.error =
+                    this.resources.getString(R.string.falloemail) + "\n" + this.resources.getString(
+                        R.string.ejemploemail
+                    )
+                return false
+
+            } else {
+
+                return true
+            }
+        }
+
+    }
+
+    fun comprobarContraseniaConfirm(): Boolean {
+        if (contraCon.text.toString().length == 0) {
+            contraCon.error = this.resources.getString(R.string.contravacia)
+            return false
+
+        } else {
+            if (!PATRON.matcher(contra.text.toString()).matches()) {
+                contraCon.error =
+                    this.resources.getString(R.string.fallocontra) + "\n" + this.resources.getString(
+                        R.string.ejemplocontra
+                    )
+                return false
+            } else {
+                return true
+            }
+        }
+    }
+
+    fun comprobarContrasenia(): Boolean {
+        if (contra.text.toString().length == 0) {
+            contra.error = this.resources.getString(R.string.contravacia)
+            return false
+        } else {
+            if (!PATRON.matcher(contra.text.toString()).matches()) {
+                contra.error =
+                    this.resources.getString(R.string.fallocontra) + "\n" + this.resources.getString(
+                        R.string.ejemplocontra
+                    )
+                return false
+            } else {
+                return true
+            }
+        }
     }
 
 

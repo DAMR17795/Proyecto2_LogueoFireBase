@@ -4,15 +4,30 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Patterns
+import android.widget.EditText
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import www.iesmurgi.proyecto2_logueofirebase.databinding.ActivityMainBinding
+import java.util.regex.Pattern
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     private lateinit var auth: FirebaseAuth
+    private val PATRON: Pattern = Pattern.compile(
+        "^" +
+                "(?=.*[0-9])" +
+                "(?=.*[a-z])" +
+                "(?=.*[A-Z])" +
+                "(?=.*[a-zA-Z])" +
+                "(?=\\S+$)" +
+                ".{4,}" +
+                "$"
+    )
+    private lateinit var tvUsu:EditText
+    private lateinit var tvContra:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,28 +39,31 @@ class MainActivity : AppCompatActivity() {
         val btnIniciar = binding.btIniciar
         val btnRegistro = binding.btRegistro
         val btnGoogle = binding.btGoogle
+        tvUsu = binding.tfUsuario
+        tvContra = binding.tfContra
 
+        //Iniciar sesion google
         btnGoogle.setOnClickListener {
             iniciarSesionGoogle()
         }
-
+        //Iniciar sesion con contraseña
         btnIniciar.setOnClickListener {
-            iniciarSesion(binding.tfUsuario.getText().toString(), binding.tfContra.getText().toString())
+            if (comprobarEmail() && comprobarContrasenia()) {
+                iniciarSesion(binding.tfUsuario.getText().toString(), binding.tfContra.getText().toString())
+            }
         }
-
+        //Registro
         btnRegistro.setOnClickListener {
             abrirVentanaRegistro()
         }
     }
-
+    //Abrir ventana registro
     fun abrirVentanaRegistro() {
 
         val enviar = Intent(this, RegistroActivity::class.java)
 
         startActivity(enviar)
     }
-
-
 
 
     //Metodo para iniciar sesion
@@ -99,6 +117,44 @@ class MainActivity : AppCompatActivity() {
         if (auth.currentUser != null) {
             startActivity(Intent(this, PerfilActivity::class.java))
             finish()
+        }
+    }
+
+    fun comprobarEmail(): Boolean {
+        if (tvUsu.text.toString().length == 0) {
+            tvUsu.error = this.resources.getString(R.string.emailvacio)
+            return false
+        } else {
+            if (!Patterns.EMAIL_ADDRESS.matcher(tvUsu.text.toString()).matches()) {
+                tvUsu.error =
+                    this.resources.getString(R.string.falloemail) + "\n" + this.resources.getString(
+                        R.string.ejemploemail
+                    )
+                return false
+
+            } else {
+
+                return true
+            }
+        }
+
+    }
+
+    fun comprobarContrasenia(): Boolean {
+        if (tvContra.text.toString().length == 0) {
+            tvContra.error = this.resources.getString(R.string.contravacia)
+            return false
+
+        } else {
+            if (!PATRON.matcher(tvContra.text.toString()).matches()) {
+                tvContra.error =
+                    this.resources.getString(R.string.fallocontra) + "\n" + this.resources.getString(
+                        R.string.ejemplocontra
+                    )
+                return false
+            } else {
+                return true
+            }
         }
     }
 

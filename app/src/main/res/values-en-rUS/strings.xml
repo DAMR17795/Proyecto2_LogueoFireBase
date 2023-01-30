@@ -4,6 +4,8 @@
     <string name="usuario">User</string>
     <string name="contraseña">Password</string>
     <string name="iniciar">Log In</string>
+    <string name="about">App Developed By:</string>
+    <string name="acerca">About</string>
     <string name="registrar">Sign Up</string>
     <string name="email">Email</string>
     <string name="confirmarcontra">Confirm Password</string>

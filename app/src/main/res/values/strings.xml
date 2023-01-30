@@ -30,4 +30,6 @@
     <string name="contravacia">Debe rellenar el campo de contraseña</string>
     <string name="fallocontra">Introduzca una contraseña valida</string>
     <string name="ejemplocontra">El patron de contraseña es: minimo 6 caracteres incluyendo un numero del 0-9, 1 mayúscula y 1 minúsucla</string>
+    <string name="about">Aplicación Desarrollada Por:</string>
+    <string name="acerca">Acerca De</string>
 </resources>

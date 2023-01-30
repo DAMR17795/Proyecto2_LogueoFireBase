@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Proyecto2_LogueoFireBase</string>
+    <string name="usuario">User</string>
+    <string name="contraseña">Password</string>
+    <string name="iniciar">Log In</string>
+    <string name="registrar">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="confirmarcontra">Confirm Password</string>
+    <string name="cerrar">Log Out</string>
+    <string name="ajustes">Settings</string>
+    <string name="saludo">Hello</string>
+    <string name="dias">Welcome</string>
+    <string name="restablecer">Reset Password</string>
+    <string name="actualizarnom">Update User Name</string>
+    <string name="actualizarnac">Update Nacionality</string>
+    <string name="actualizaredad">Update Age</string>
+    <string name="borrarusu">Delete User</string>
+    <string name="registro">Register</string>
+    <string name="msg_restablecerclave">An email has been sent to restore your password</string>
+    <string name="msg_borrarusu">User  removed with succes</string>
+    <string name="msg_actualizarUser">Name updated with succes</string>
+    <string name="actualizarNacio">Nacionality updated with succes</string>
+    <string name="actualizarEdad">Age updated with succes</string>
+    <string name="restablecerContra">Push Ok to send you an email an restore your password</string>
+    <string name="borrarUsuarioTexto">Your User Account is gonna be deleted. Do you want to continue?</string>
+    <string name="noigualcontra">The passwords aren\'t the same</string>
+    <string name="emailvacio">You must fill the email field</string>
+    <string name="falloemail">Introduce a valid email</string>
+    <string name="ejemploemail">example@gmail.com</string>
+    <string name="contravacia">You must fill the password field</string>
+    <string name="fallocontra">Introduce a valid password</string>
+    <string name="ejemplocontra">"The pattern of the password is: "</string>
 </resources>

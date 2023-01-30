@@ -1,15 +1,21 @@
 package www.iesmurgi.proyecto2_logueofirebase
 
 import android.app.Activity
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.EditText
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import www.iesmurgi.proyecto2_logueofirebase.databinding.ActivityMainBinding
 import java.util.regex.Pattern
 
@@ -93,8 +99,26 @@ class MainActivity : AppCompatActivity() {
     //Metodo para iniciar sesion con google
     fun iniciarSesionGoogle() {
         val providerGoogle = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
+
         startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providerGoogle).build(),
             Companion.RC_SIGN_IN)
+
+    }
+    //Escribimos usuario en la bbdd
+    fun writeNewUser(email:String) {
+        val db = Firebase.firestore
+
+        val data = hashMapOf(
+            "email" to email,
+            "usuario" to "nouser",
+            "nacionalidad" to "nonacionality",
+            "edad" to "0"
+        )
+
+        db.collection("user").document(email)
+            .set(data)
+            .addOnSuccessListener { Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!") }
+            .addOnFailureListener{ e -> Log.w(ContentValues.TAG, "Error writing document", e)}
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -106,8 +130,30 @@ class MainActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 val user = FirebaseAuth.getInstance().currentUser
 
-                startActivity(Intent(this, PerfilActivity::class.java))
-                finish()
+                val db = FirebaseFirestore.getInstance()
+
+                val userRef = db.collection("user").document(user?.email.toString())
+
+               userRef.get()
+                    .addOnSuccessListener { documentSnapshot ->
+                        if (documentSnapshot.exists()) {
+                            //El documento existe y empezamos actividad
+
+                            startActivity(Intent(this, PerfilActivity::class.java))
+                            finish()
+
+                        } else {
+                            // El documento no existe
+                            //Damos de alta al usuario
+                            writeNewUser(user?.email.toString())
+                            //Empezamos actividad
+                            startActivity(Intent(this, PerfilActivity::class.java))
+                            finish()
+                        }
+                    }
+                    /*.addOnFailureListener { exception ->
+                        // Error al obtener los datos del usuario
+                    }*/
             }
         }
     }

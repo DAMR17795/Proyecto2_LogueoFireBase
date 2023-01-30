@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Proyecto2_LogueoFireBase</string>
+    <string name="app_name">Logueo_Daniel</string>
     <string name="usuario">User</string>
     <string name="contraseña">Password</string>
     <string name="iniciar">Log In</string>
@@ -24,7 +24,7 @@
     <string name="actualizarEdad">Age updated with succes</string>
     <string name="restablecerContra">Push Ok to send you an email an restore your password</string>
     <string name="borrarUsuarioTexto">Your User Account is gonna be deleted. Do you want to continue?</string>
-    <string name="noigualcontra">The passwords aren\'t the same</string>
+    <string name="noigualcontra">The passwords are not the same</string>
     <string name="emailvacio">You must fill the email field</string>
     <string name="falloemail">Introduce a valid email</string>
     <string name="ejemploemail">example@gmail.com</string>

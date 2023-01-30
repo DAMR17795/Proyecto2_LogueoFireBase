@@ -30,5 +30,5 @@
     <string name="ejemploemail">example@gmail.com</string>
     <string name="contravacia">You must fill the password field</string>
     <string name="fallocontra">Introduce a valid password</string>
-    <string name="ejemplocontra">"The pattern of the password is: "</string>
+    <string name="ejemplocontra">"The pattern of the password is: at least 6 characters, 1 capital letter and 1 lower case"</string>
 </resources>

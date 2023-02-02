@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                 if (it.isSuccessful) {
                     abrirPerfil()
                 } else {
-                    Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, this.resources.getString(R.string.error), Toast.LENGTH_LONG).show()
                 }
 
         }

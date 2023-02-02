@@ -32,4 +32,5 @@
     <string name="ejemplocontra">El patron de contraseña es: minimo 6 caracteres incluyendo un numero del 0-9, 1 mayúscula y 1 minúsucla</string>
     <string name="about">Aplicación Desarrollada Por:</string>
     <string name="acerca">Acerca De</string>
+    <string name="error">Error: No hay ningún usuario con ese con dichos datos. El usuario puede haber sido eliminado o no existir.</string>
 </resources>
